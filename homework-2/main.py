@@ -1,6 +1,5 @@
 from src.channel import Channel
 
-
 if __name__ == '__main__':
     moscowpython = Channel('UC-OVMPlMA3-YCIeg4z5z23A')
 
@@ -11,7 +10,6 @@ if __name__ == '__main__':
 
     # менять не можем
     moscowpython.channel_id = 'Новое название'
-    print(moscowpython.channel_id)
     # AttributeError: property 'channel_id' of 'Channel' object has no setter
 
     # можем получить объект для работы с API вне класса
