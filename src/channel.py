@@ -53,22 +53,36 @@ class Channel:
         return f'{self.title} ({self.url})'
 
     def __add__(self, other):
+        if not isinstance(other, Channel):
+            raise ValueError('Not the same type')
         return int(self.subscriber_count) + int(other.subscriber_count)
 
     def __sub__(self, other):
+        if not isinstance(other, Channel):
+            raise ValueError('Not the same type')
         return int(self.subscriber_count) - int(other.subscriber_count)
 
     def __gt__(self, other):
+        if not isinstance(other, Channel):
+            raise ValueError('Not the same type')
         return int(self.subscriber_count) > int(other.subscriber_count)
 
     def __ge__(self, other):
+        if not isinstance(other, Channel):
+            raise ValueError('Not the same type')
         return int(self.subscriber_count) >= int(other.subscriber_count)
 
     def __lt__(self, other):
+        if not isinstance(other, Channel):
+            raise ValueError('Not the same type')
         return int(self.subscriber_count) < int(other.subscriber_count)
 
     def __le__(self, other):
+        if not isinstance(other, Channel):
+            raise ValueError('Not the same type')
         return int(self.subscriber_count) <= int(other.subscriber_count)
 
     def __eq__(self, other):
+        if not isinstance(other, Channel):
+            raise ValueError('Not the same type')
         return int(self.subscriber_count) == int(other.subscriber_count)
