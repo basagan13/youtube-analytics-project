@@ -9,12 +9,17 @@ class Video:
                                      id=self.__video_id).execute()
 
     def __init__(self, video_id: str):
-        self.__video_id = video_id
+        try:
+            self.__video_id = video_id
 
-        video_response = self.video_response
-        self.video_title: str = video_response['items'][0]['snippet']['title']
-        self.view_count: int = video_response['items'][0]['statistics']['viewCount']
-        self.like_count: int = video_response['items'][0]['statistics']['likeCount']
+            v_resp = self.video_response
+            self.title: str = v_resp['items'][0]['snippet']['title']
+            self.view_count: int = v_resp['items'][0]['statistics']['viewCount']
+            self.like_count: int = v_resp['items'][0]['statistics']['likeCount']
+
+        except IndexError:
+            self.__video_id = video_id
+            self.title, self.view_count, self.like_count = None, None, None
 
     @property
     def video_id(self):
@@ -25,7 +30,7 @@ class Video:
         return f'https://youtu.be/{self.__video_id}'
 
     def __str__(self):
-        return self.video_title
+        return self.title
 
     def __repr__(self):
         return f'{self.__class__.__name__}("{self.__video_id}")'
